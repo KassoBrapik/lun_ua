@@ -1,7 +1,20 @@
 import React, { Component } from "react";
 
 class Form extends Component {
+  state = {
+    name: "",
+    email: ""
+  };
+
+  handleChange = event => {
+    // console.log(event.target.name);
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  };
+
   render() {
+    console.log(this.state.name, this.state.email)
     return (
       <div className="container">
         <div className="row">
@@ -31,11 +44,10 @@ class Form extends Component {
               </ul>
               <div className="step mt-5">
                 <div className="form-group">
-                  <label
-                    for="name"
-                  >Введите имя
-                  </label>
+                  <label for="name">Введите имя</label>
                   <input
+                    onChange={this.handleChange}
+                    name="name"
                     type="text"
                     className="form-control "
                     id="name"
@@ -44,11 +56,10 @@ class Form extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label
-                    for="email"
-                  >Введите почту
-                  </label>
+                  <label for="email">Введите почту</label>
                   <input
+                    onChange={this.handleChange}
+                    name="email"
                     type="text"
                     className="form-control"
                     id="email"
