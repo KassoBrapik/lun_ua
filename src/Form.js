@@ -39,9 +39,12 @@ class Form extends Component {
 
   handleClick = event => {
     const step = Number(event.target.getAttribute("data-step"));
-    this.setState({
-      step: step
-    });
+    if (this.validate()) {
+      this.setState({
+        step: step
+      });
+    }
+    
   };
 
   handleClickButtonNext = () => {
@@ -96,6 +99,8 @@ class Form extends Component {
       })
     )
   };
+
+
   render() {
     // console.log(this.state.name, this.state.email);
     // console.log(this.state.step);
