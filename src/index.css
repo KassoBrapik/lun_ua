@@ -3,3 +3,12 @@
   flex-direction: column;
   align-items: center;
 }
+
+.btn-toolbar .btn-group .btn-active {
+  background-color: blue;
+}
+
+.form-group .validation {
+  color: red;
+  font-size: 12px;
+}
