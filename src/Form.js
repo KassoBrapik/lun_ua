@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import ButtonsTop from "./ButtonsTop"
-import ContentForm from "./ContentForm"
+import ButtonsTop from "./ButtonsTop";
 
 class Form extends Component {
   state = {
@@ -32,7 +31,6 @@ class Form extends Component {
 
   handleChange = event => {
     // console.log(event.target.name);
-
     this.setState({
       [event.target.name]: event.target.value,
       errors: {}
@@ -100,6 +98,7 @@ class Form extends Component {
   };
 
   render() {
+    console.log(this.state.errors)
     // console.log(this.state.name, this.state.email);
     // console.log(this.state.step);
     // console.log(this.props)
@@ -111,19 +110,87 @@ class Form extends Component {
         <div className="row">
           <div className="col-12">
             <form className="mt-2">
-              
-              <ButtonsTop 
+              <ButtonsTop
                 step={this.state.step}
                 handleClick={this.handleClick}
               />
+              {this.state.step === 1 ? (
+                <div className="step mt-5">
+                  <div className="form-group">
+                    <label htmlFor="name">Введите имя</label>
+                    <input
+                      onChange={this.handleChange}
+                      name="name"
+                      type="text"
+                      className="form-control "
+                      id="name"
+                      placeholder="Имя"
+                      style={{ width: "300px" }}
+                    />
+                    {this.state.errors.name ? (
+                      <div className="validation">
+                      {this.state.errors.name}
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="email">Введите почту</label>
+                    <input
+                      onChange={this.handleChange}
+                      name="email"
+                      type="text"
+                      className="form-control"
+                      id="email"
+                      placeholder="Почта"
+                      style={{ width: "300px" }}
+                    />
+                    {this.state.errors.email ? (
+                      <div className="validation">
+                        {this.state.errors.email}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              ) : null}
 
-              <ContentForm 
-              step={this.state.step}
-              handleChange={this.handleChange}
-              errors={this.state.errors}
-              country={this.state.country}
-              />
-
+              {this.state.step === 2 ? (
+                <div className="step mt-5">
+                  <div className="form-group">
+                    <label htmlFor="country">Выберите страну</label>
+                    <select
+                      onChange={this.handleChange}
+                      name="country"
+                      value={this.state.country}
+                      className="form-control "
+                      id="country"
+                      placeholder="Страна"
+                      style={{ width: "300px" }}
+                    >
+                      {optionsCountries}
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="city">Выберите город</label>
+                    <select
+                      onChange={this.handleChange}
+                      name="city"
+                      type="text"
+                      className="form-control"
+                      id="email"
+                      placeholder="Город"
+                      style={{ width: "300px" }}
+                    >
+                      {optionsCities}
+                    </select>
+                  </div>
+                </div>
+              ) : null}
+              {this.state.step === 3 ? (
+                <div className="step mt-5">3</div>
+              ) : null}
+              {this.state.step === 4 ? (
+                <div className="step mt-5">4</div>
+              ) : null}
               <div className="mt-5 text-center">
                 <button
                   type="button"
