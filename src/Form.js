@@ -44,7 +44,6 @@ class Form extends Component {
         step: step
       });
     }
-    
   };
 
   handleClickButtonNext = () => {
@@ -86,20 +85,17 @@ class Form extends Component {
         options.push({
           value: key,
           label: this.props.cities[key].name
-        })
+        });
       }
     }
-    return (
-      options.map(option => {
-        return(
-          <option key={option.value} value={option.value}>
+    return options.map(option => {
+      return (
+        <option key={option.value} value={option.value}>
           {option.label}
-          </option>
-        )
-      })
-    )
+        </option>
+      );
+    });
   };
-
 
   render() {
     // console.log(this.state.name, this.state.email);
@@ -195,7 +191,9 @@ class Form extends Component {
                       style={{ width: "300px" }}
                     />
                     {this.state.errors.email ? (
-                      <div className="validation">{this.state.errors.email}</div>
+                      <div className="validation">
+                        {this.state.errors.email}
+                      </div>
                     ) : null}
                   </div>
                 </div>
