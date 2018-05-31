@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ButtonsTop from "./ButtonsTop"
 
 class Form extends Component {
   state = {
@@ -109,58 +110,11 @@ class Form extends Component {
         <div className="row">
           <div className="col-12">
             <form className="mt-2">
-              <div
-                className="btn-toolbar step mt-5"
-                role="toolbar"
-                aria-label="Toolbar with button groups"
-              >
-                <div
-                  className="btn-group mr-2"
-                  role="group"
-                  aria-label="First group"
-                >
-                  <button
-                    type="button"
-                    className={`btn mr-1 btn-secondary ${
-                      this.state.step === 1 ? `btn-active` : null
-                    }`}
-                    data-step={1}
-                    onClick={this.handleClick}
-                  >
-                    1
-                  </button>
-                  <button
-                    type="button"
-                    className={`btn mr-1 btn-secondary ${
-                      this.state.step === 2 ? `btn-active` : null
-                    }`}
-                    data-step={2}
-                    onClick={this.handleClick}
-                  >
-                    2
-                  </button>
-                  <button
-                    type="button"
-                    className={`btn mr-1 btn-secondary ${
-                      this.state.step === 3 ? `btn-active` : null
-                    }`}
-                    data-step={3}
-                    onClick={this.handleClick}
-                  >
-                    3
-                  </button>
-                  <button
-                    type="button"
-                    className={`btn btn-secondary ${
-                      this.state.step === 4 ? `btn-active` : null
-                    }`}
-                    data-step={4}
-                    onClick={this.handleClick}
-                  >
-                    4
-                  </button>
-                </div>
-              </div>
+              
+              <ButtonsTop 
+                step={this.state.step}
+                handleClick={this.handleClick}
+              />
 
               {this.state.step === 1 ? (
                 <div className="step mt-5">
