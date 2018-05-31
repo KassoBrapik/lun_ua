@@ -14,3 +14,7 @@
   color: red;
   font-size: 12px;
 }
+
+.form-control-errors {
+  border: 1px solid red;
+}

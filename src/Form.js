@@ -5,22 +5,25 @@ class Form extends Component {
   state = {
     name: "",
     email: "",
-    country: "1",
+    country: "",
     step: 1,
-    errors: {}
+    errorsName: {},
+    errorsEmail: {}
   };
 
   validate = () => {
-    const newErrors = {};
+    const newErrorsName = {};
+    const newErrorsEmail = {};
     if (this.state.name == "") {
-      newErrors.name = "Вы не ввели имя пользователя";
+      newErrorsName.name = "Вы не ввели имя пользователя";
     }
     if (this.state.email == "") {
-      newErrors.email = "Вы не ввели email";
+      newErrorsEmail.email = "Вы не ввели email";
     }
-    if (Object.keys(newErrors).length > 0) {
+    if (Object.keys(newErrorsName).length > 0 || Object.keys(newErrorsEmail).length) {
       this.setState({
-        errors: newErrors
+        errorsName: newErrorsName,
+        errorsEmail: newErrorsEmail
       });
 
       return false;
@@ -75,6 +78,7 @@ class Form extends Component {
         </option>
       );
     });
+ 
   };
 
   getOptionsCities = country => {
@@ -122,14 +126,14 @@ class Form extends Component {
                       onChange={this.handleChange}
                       name="name"
                       type="text"
-                      className="form-control "
+                      className={`form-control ${Object.keys(this.state.errorsName).length > 0 ? `form-control-errors` : null}`}
                       id="name"
                       placeholder="Имя"
                       style={{ width: "300px" }}
                     />
-                    {this.state.errors.name ? (
+                    {this.state.errorsName.name || this.state.errorsEmail.email ? (
                       <div className="validation">
-                      {this.state.errors.name}
+                      {this.state.errorsName.name}
                       </div>
                     ) : null}
                   </div>
@@ -139,14 +143,14 @@ class Form extends Component {
                       onChange={this.handleChange}
                       name="email"
                       type="text"
-                      className="form-control"
+                      className={`form-control ${Object.keys(this.state.errorsEmail).length > 0 ? `form-control-errors` : null}`}
                       id="email"
                       placeholder="Почта"
                       style={{ width: "300px" }}
                     />
-                    {this.state.errors.email ? (
+                    {this.state.errorsName.name || this.state.errorsEmail.email ? (
                       <div className="validation">
-                        {this.state.errors.email}
+                        {this.state.errorsEmail.email}
                       </div>
                     ) : null}
                   </div>
